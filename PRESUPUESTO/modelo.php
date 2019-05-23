@@ -13,15 +13,17 @@ class Modelo
     private $busqueda;
     private $cpc;
     private $resultado;
-
-
+    private $insertar;
+    private $mensaje;
+    private $id;
+    private $llenar_busqueda;
     
     public function __construct()
     {
         //invoca y almacena en db a la clase Conexionbdd y lo que tenga la funcion Conectar
         $this->db=Conexionbdd::Conectar();
         
-        //vamos a declarar a registro como un array
+        //vamos a declarar las variables como un array
         $this->registro=array(); 
 
         $this->recordatorios=array();
@@ -32,20 +34,30 @@ class Modelo
 
         $this->resultado=array();
 
+        $this->insertar;
+
+        $this->mensaje;
+
+        $this->id=array();
+
+        $this->llenar_busqueda=array();
+
     }
+    
+
     
 
     //FUNCION PARA OBTENER LOS ULTIMOS REGISTROS DE CADA PRODUCTO
 
     public function get_all_register()
     {
-        $consulta = $this->db->query('SELECT id,id_producto,descripcion,p_actual,fecha,nota,cpc,ingreso,egreso 
-                                      FROM presupuesto_total,producto 
-                                      WHERE id = ANY (SELECT MAX(id) FROM presupuesto_total,producto
-                                      WHERE presupuesto_total.id_producto=producto.cpc
-                                      GROUP by producto.cpc)
-                                      AND
-                                      presupuesto_total.id_producto=producto.cpc');
+        $consulta = $this->db->query('SELECT id,id_producto,descripcion,p_actual,p_inicial,fecha,nota,cpc,ingreso,egreso 
+        FROM presupuesto_total,producto 
+        WHERE id = ANY (SELECT MAX(id) FROM presupuesto_total,producto
+        WHERE presupuesto_total.cpcFk=producto.id_producto
+        GROUP by producto.id_producto)
+        AND
+        presupuesto_total.cpcFk=producto.id_producto');
 
         while($filas=$consulta->fetch_assoc())
         {
@@ -55,19 +67,43 @@ class Modelo
 
         return  $this->registro;
     }
-    
 
-    public function get_all_recordatorios(){
-        $consulta=$this->db->query('select * from recordatorio');
+    //FUNCION PARA OBTENER EL REGISTRO CON EL RESULTADO DE LA BUSQUEDA Y EMPEZAR LA INSERCION
 
-        while($filas = $consulta->fetch_assoc()){
-            $this->recordatorios[]=$filas;
+    public function get_resul_search($id_producto){
+        $consulta=$this->db->query("SELECT id,id_producto,cpc,descripcion,nota,p_inicial,p_actual,fecha,egreso,ingreso
+                                    FROM presupuesto_total,producto
+                                    WHERE cpcFk= '$id_producto'
+                                    AND cpcFk=id_producto
+                                    ORDER BY id DESC LIMIT 1");
+        while($filas=$consulta->fetch_assoc()){
+            $this->registro[]=$filas;
         }
-        return $this->recordatorios;
+        return $this->registro;
     }
+    
 
     public function get_cpc(){
         $consulta=$this->db->query('SELECT cpc FROM producto');
+
+        while($filas=$consulta->fetch_assoc()){
+            $this->cpc[]=$filas;
+        }
+        return $this->cpc;
+    }
+
+    public function get_id(){
+        $consulta=$this->db->query('SELECT id_producto FROM producto
+        ORDER BY id_producto DESC LIMIT 1 ');
+        while($filas=$consulta->fetch_assoc()){
+            $this->id[]=$filas;
+        }
+        return $this->id;
+
+    }
+
+    public function get_tipo(){
+        $consulta=$this->db->query('SELECT tipo FROM producto');
 
         while($filas=$consulta->fetch_assoc()){
             $this->cpc[]=$filas;
@@ -89,15 +125,23 @@ class Modelo
         $consulta=$this->db->query("DELETE FROM presupuesto_total WHERE id='$id'");     
     }
 
+    //FUNCION PARA INSERTAR UN PRODUCTO CON EL ID DEL PRODUCTO QUE LE CORRESPONDE 
 
-    public function insert_ingreso($id_producto,$nota, $ingreso,$p_actual,$fecha){
+    public function insert_product($cpc,$descripcion,$p_actual,$tipo,$fecha,$nota,$id_producto){
+        $id_producto2=$id_producto + 1;
+        $consulta = $this->db->query("INSERT INTO producto (cpc, descripcion,p_inicial,tipo) VALUES ('$cpc','$descripcion','$p_actual','$tipo'); ");   
+        $consulta = $this->db->query("INSERT INTO presupuesto_total(fecha,p_actual,nota,cpcFk) VALUES ('$fecha','$p_actual','$nota','$id_producto2');");        
+        
+    }
+
+
+    public function insert_ingreso($id_producto,$nota,$ingreso,$p_actual,$fecha){
             
         $a = $p_actual;
         $b = $ingreso;
         $p_total = $a + $b;
-        $consulta=$this->db->query("INSERT INTO presupuesto_total (id_producto,nota,ingreso, p_actual, fecha) VALUES ('$id_producto','$nota', '$ingreso', '$p_total',  '$fecha');");         
-        
-       
+        $consulta=$this->db->query("INSERT INTO presupuesto_total (fecha,ingreso,p_actual,nota,cpcFk) VALUES ('$fecha','$ingreso','$p_total','$nota','$id_producto');");         
+  
     }
     
     public function insert_egreso($id_producto, $nota, $egreso,$fecha,$p_actual){
@@ -109,7 +153,7 @@ class Modelo
             $b = $egreso;
             $p_total = $a - $b;
     
-            $consulta=$this->db->query("INSERT INTO presupuesto_total (id_producto,nota, p_actual, egreso, fecha) VALUES ('$id_producto','$nota', '$p_total', '$egreso', '$fecha');");          
+            $consulta=$this->db->query("INSERT INTO presupuesto_total (fecha,egreso,p_actual,nota,cpcFk) VALUES ('$fecha','$egreso','$p_total','$nota','$id_producto');");          
         }     
     }
 

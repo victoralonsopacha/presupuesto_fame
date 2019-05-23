@@ -1,5 +1,6 @@
 <?php
 	 $id=$_POST['id'];
+	 $id_producto=$_POST['id_producto'];
 	 $nota=$_POST['nota'];
 	 $egreso=$_POST['egreso'];
 	 $fecha=$_POST['fecha'];
@@ -8,10 +9,10 @@
 
 //Llamada al modelo
 
-require_once("../MODELO/modelo.php");
+require_once("modelo.php");
 $per=new Modelo();
 
 $per->edit_registro($id,$nota,$egreso,$fecha,$p_actual);
 
-	header("Location: registro_view.php");
+	require_once("iniciar_insert.php");
 ?>
