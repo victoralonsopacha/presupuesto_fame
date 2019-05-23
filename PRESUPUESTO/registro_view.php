@@ -55,14 +55,14 @@
                     <div class="col">
                         <select name="tipo" class="form-control">
                             <option selected>Escoja un tipo...</option>
-                            <<option>Infima</option>
-                            <option>Subasta</option>
-                            <option>Giro</option>
-                            <option>Catalogo</option>
-                            <option>Contrato</option>
-                            <option>Bienes y Servicios Unicos</option>
-                            <option>Regimen Especial</option>
-                            <option>Cortizacion</option>
+                            <option>INFIMA CUANTIA</option>
+                            <option>SUBASTA</option>
+                            <option>GIRO</option>
+                            <option>CATALOGO</option>
+                            <option>CONTRATO</option>
+                            <option>BIENES Y SERVICIOS UNICOS</option>
+                            <option>REGIMEN ESPECIAL</option>
+                            <option>COTIZACION</option>
                         </select>
                     </div>
                 </div>
@@ -111,14 +111,14 @@
                     <div class="col-sm">
                         <select class="form-control" id="tipo_proceso" name="tipo" aria-label="Example select with button addon">
                             <option selected>Escoja un tipo...</option>
-                            <option>Infima</option>
-                            <option>Subasta</option>
-                            <option>Giro</option>
-                            <option>Catalogo</option>
-                            <option>Contrato</option>
-                            <option>Bienes y Servicios Unicos</option>
-                            <option>Regimen Especial</option>
-                            <option>Cortizacion</option>
+                            <option>INFIMA CUANTIA</option>
+                            <option>SUBASTA</option>
+                            <option>GIRO</option>
+                            <option>CATALOGO</option>
+                            <option>CONTRATO</option>
+                            <option>BIENES Y SERVICIOS UNICOS</option>
+                            <option>REGIMEN ESPECIAL</option>
+                            <option>COTIZACION</option>
                         </select>
                     </div>
                     <div class="col-sm">

@@ -74,7 +74,6 @@ $datos=$per->get_resul_search($id_producto);
 <h3>INGRESO</h3>
 
 <div id="f">
-
     <table class="table">
             <thead class="thead-dark">
                 <tr> 
@@ -91,7 +90,7 @@ $datos=$per->get_resul_search($id_producto);
             </thead>    
         <tbody>
         <?php
-                echo "</tr>";   		
+            echo "</tr>";   		
         ?>	
         <?php
         foreach ($datos as $ver) 
