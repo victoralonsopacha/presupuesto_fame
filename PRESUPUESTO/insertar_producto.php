@@ -11,7 +11,7 @@
     require_once("modelo.php");
     $per=new Modelo();
     
-$recibir=$per->insert_product($cpc,$descripcion,$p_actual,$tipo,$fecha,$nota,$id_producto);    
+    $recibir=$per->insert_product($cpc,$descripcion,$p_actual,$tipo,$fecha,$nota,$id_producto);    
     
     header("Location: registro_view.php");
 

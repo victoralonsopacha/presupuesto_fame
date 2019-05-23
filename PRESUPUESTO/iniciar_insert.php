@@ -16,12 +16,11 @@ $datos=$per->get_resul_search($id_producto);
 
 ?>
         
-        <input type="text" name="id_producto" value="<?php echo $id_producto ?>" class="form-control"/>
+    <input type="text" name="id_producto" value="<?php echo $id_producto ?>" class="form-control"/>
     
     <table class="table">
         <thead class="thead-dark">
-            <tr>
-                
+            <tr>  
                 <th scope="col">CPC</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Nota</th>
@@ -71,8 +70,8 @@ $datos=$per->get_resul_search($id_producto);
     </table>
 
 
-<!----------------------------------------FORMULARIO PARA INGRESAR-------------------------------------------------------->
-<h2>INGRESO</h2>
+<!----------------------------------------FORMULARIO PARA INGRESAR MAS PRESUPUESTO---------------------------------------->
+<h3>INGRESO</h3>
 
 <div id="f">
 
@@ -125,54 +124,49 @@ $datos=$per->get_resul_search($id_producto);
 
 
 
-<!--------------------------------------------FORMULARIO PARA EL EGRESO------------------------------------------------------>
+<!--------------------------------------------FORMULARIO PARA REGISTRAR UN EGRESO------------------------------------------------------>
 
-    <h2>EGRESO</h2>
+<h3>EGRESO</h3>
 
 <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                
-                <th scope="col">CPC</th>
-                <th scope="col">Descripcion</th>
-                <th scope="col">Nota</th>
-                <th scope="col">Presupuesto Inicial</th>
-                <th scope="col">Presupuesto Actual</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Egreso</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>    
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">CPC</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Nota</th>
+            <th scope="col">Presupuesto Inicial</th>
+            <th scope="col">Presupuesto Actual</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Egreso</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>    
     <tbody>
-    <?php
-            echo "</tr>";   		
-    ?>	
-	<?php
-    foreach ($datos as $ver) 
-    {
-    ?>
-                
-        <form id="frm-registro" action="insertEst_controller.php" method="post" enctype="multipart/form-data">
-        <td><input type="text" name="cpc" value="<?php echo $ver['cpc']; ?>" class="form-control"/></td>
-        <td><input type="text" name="descripcion" value="<?php echo $ver['descripcion']; ?>" class="form-control" /></td>
-        <td><input type="text" name="nota" value="<?php echo $ver['nota']; ?>" class="form-control" require /></td>
-        <td><input type="text" name="p_inicial" value="<?php echo $ver['p_inicial']; ?>" class="form-control" require /></td>
-        <td><input type="text" name="p_actual" value="<?php echo $ver['p_actual']; ?>" class="form-control" placeholder="Ingrese una cantidad" require /></td>
-        <td><input type="date" name="fecha" value="<?php echo $ver['fecha']; ?>" class="form-control"/></td>
-        <td><input type="text" name="egreso" value="<?php echo $ver['egreso']; ?>" class="form-control" require /></td>
-        <td><input type="hidden" name="id_producto" value="<?php echo $ver['id_producto']; ?>" class="form-control"/></td>
-        <td><button Type="Submit" class="btn btn-success">Insertar</button></td>
-        </form>
-    <?php
-        echo "</tr>";   
-	}
-	?>
+        <?php
+                echo "</tr>";   		
+        ?>	
+        <?php
+        foreach ($datos as $ver) 
+        {
+        ?>          
+            <form id="frm-registro" action="insertEst_controller.php" method="post" enctype="multipart/form-data">
+            <td><input type="text" name="cpc" value="<?php echo $ver['cpc']; ?>" class="form-control"/></td>
+            <td><input type="text" name="descripcion" value="<?php echo $ver['descripcion']; ?>" class="form-control" /></td>
+            <td><input type="text" name="nota" value="<?php echo $ver['nota']; ?>" class="form-control" require /></td>
+            <td><input type="text" name="p_inicial" value="<?php echo $ver['p_inicial']; ?>" class="form-control" require /></td>
+            <td><input type="text" name="p_actual" value="<?php echo $ver['p_actual']; ?>" class="form-control" placeholder="Ingrese una cantidad" require /></td>
+            <td><input type="date" name="fecha" value="<?php echo $ver['fecha']; ?>" class="form-control"/></td>
+            <td><input type="text" name="egreso" value="<?php echo $ver['egreso']; ?>" class="form-control" require /></td>
+            <td><input type="hidden" name="id_producto" value="<?php echo $ver['id_producto']; ?>" class="form-control"/></td>
+            <td><button Type="Submit" class="btn btn-success">Insertar</button></td>
+            </form>
+        <?php
+            echo "</tr>";   
+        }
+        ?>
     </tbody>
-    </table>
-
-
-
-    <div>
+</table>
+<div>
     <br>
 </div>
 

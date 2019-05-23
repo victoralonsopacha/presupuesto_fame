@@ -50,7 +50,4 @@
 	}else{
 		echo "No hemos encotrado ningun registro con la palabra ".$palabra." y el tipo ".$tipo;
 	}
-
-
-
 ?>

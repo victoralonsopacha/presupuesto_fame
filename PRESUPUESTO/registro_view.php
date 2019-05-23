@@ -8,7 +8,6 @@
     <body>
         <h1 style="text-align: center">Presupuesto</h1>
 
-
         <!--FORULARIO PARA INGRESAR UN PRODUCTO-->
 
         <div class="container">
@@ -66,56 +65,11 @@
                             <option>Cortizacion</option>
                         </select>
                     </div>
-
-                    <input type="date" name="cumpleanios" step="1" min="2013-01-01" max="2013-12-31" value="<?php echo date("Y-m-d");?>">  
-  
-
-
                 </div>
                 <br/> 
                 <input type="submit"  class="btn btn-success" value="Ingresar"/>
             </form>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         <!--
 
@@ -145,7 +99,7 @@
         -->
 
 
-        <!--FORMULARIO PARA BUSCADOR-->
+        <!--FORMULARIO PARA BUSCADOR CON OPCIONES PRE-CARGADAS-->
 
         <br/>
         <div class="container">
@@ -172,21 +126,11 @@
                     </div>
                 </div>
             </form>
-        </div>
-
-
-        
-            
-            
-            
-            
-
-        
-        
+        </div>            
      
         <br/>
         <br/>
-        <!--LLAMA A LA CONEXION Y LUEGO AL BUSCADOR LLEVANDO EL INPUT Y EL SELCT-->
+        <!--LLAMA A LA CONEXION Y LUEGO AL BUSCADOR LLEVANDO LOS DOS CRITERIOS DE BUSQUEDA -->
         <?php
                     if(isset($_POST['palabra'],$_POST['tipo'])){
                         require_once "conexion.php";

@@ -12,7 +12,8 @@
 	require_once("modelo.php");
 	$per=new Modelo();
 
-	
+	//SI LA VARIABLE CON EL INGRESO CONTIENE ALGO EJECUTA UNA INSERCION, DE LO CONTRARIO EJECUTA LA FUNCION
+	//PARA REGISTRAR EL EGRESO
 	if($ingreso){
 		$per->insert_ingreso($id_producto,$nota,$ingreso,$p_actual,$fecha);
 	}else{
@@ -21,9 +22,7 @@
 	
 
 	header("Location: registro_view.php");
-	//require_once("iniciar_insert.php");
-
- 	//header("Location: iniciar_insert.php");
+	
 
 
 ?>
