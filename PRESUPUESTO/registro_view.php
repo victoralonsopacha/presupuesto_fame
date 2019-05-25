@@ -8,7 +8,7 @@
     <body>
         <h1 style="text-align: center">Presupuesto</h1>
 
-        <!--FORULARIO PARA INGRESAR UN PRODUCTO-->
+        <!-------------------------------FORULARIO PARA INGRESAR UN PRODUCTO--------------------------------------------->
 
         <div class="container">
             <h3>Ingresar nuevo CPC</h3>
@@ -71,35 +71,7 @@
             </form>
         </div>
 
-        <!--
-
-        <div>
-            <br>
-            </div>
-
-                <form action="registro_view.php" method="POST" autocomplete="off">
-                    <input type="text" name="palabra" placeholder="¿Qué esta buscando?">
-
-                    <select name="tipo" >
-
-                    <option>Tipo1</option>
-                    <option>Tipo2</option>
-                    <option>Tipo3</option>
-                    <option>Tipo4</option>
-                    
-                    </select>
-                    
-                    <input type="submit" value="Buscar" class="btn btn-primary">
-                </form>
-                
-            <div>
-            <br>
-        </div>
-
-        -->
-
-
-        <!--FORMULARIO PARA BUSCADOR CON OPCIONES PRE-CARGADAS-->
+        <!----------------------------FORMULARIO PARA BUSCADOR CON OPCIONES PRE-CARGADAS---------------------------------->
 
         <br/>
         <div class="container">
@@ -130,12 +102,12 @@
      
         <br/>
         <br/>
-        <!--LLAMA A LA CONEXION Y LUEGO AL BUSCADOR LLEVANDO LOS DOS CRITERIOS DE BUSQUEDA -->
+        <!--------------LLAMA A LA CONEXION Y LUEGO AL BUSCADOR LLEVANDO LOS DOS CRITERIOS DE BUSQUEDA -------------------->
         <?php
                     if(isset($_POST['palabra'],$_POST['tipo'])){
                         require_once "conexion.php";
                         require_once "buscar.php";
-                        }
+                    }
                     require_once("registro_view.php");
         ?>
   

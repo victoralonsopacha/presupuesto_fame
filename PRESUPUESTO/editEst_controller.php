@@ -7,12 +7,12 @@
 	 $p_actual=$_POST['p_actual'];
 	 
 
-//Llamada al modelo
+	//Llamada al modelo
 
-require_once("modelo.php");
-$per=new Modelo();
+	require_once("modelo.php");
+	$per=new Modelo();
 
-$per->edit_registro($id,$nota,$egreso,$fecha,$p_actual);
+	$per->edit_registro($id,$nota,$egreso,$fecha,$p_actual);
 
-	require_once("iniciar_insert.php");
+		require_once("iniciar_insert.php");
 ?>

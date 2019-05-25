@@ -68,7 +68,6 @@ class Modelo
             $this->id[]=$filas;
         }
         return $this->id;
-
     }
 
     //FUNCION PARA EDITAR UN REGISTRO
@@ -102,6 +101,7 @@ class Modelo
     //FUNCION PARA REGISTRAR UN EGRESO
     public function insert_egreso($id_producto, $nota, $egreso,$fecha,$p_actual){
         if($egreso>$p_actual){
+            //FALTA IMPLEMENTAR UN MENSAJE EN EL CASO DE SOBREPASARSE EN EL PRESUPUESTO
             echo "<h1>No tienes suficiente dinero</h1>";
             //return false;
         }else{
