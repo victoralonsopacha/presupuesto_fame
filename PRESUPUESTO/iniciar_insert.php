@@ -17,18 +17,6 @@ $datos=$per->get_resul_search($id_producto);
 ?>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 <!--------------------------------------------FORMULARIO PARA REGISTRAR UN EGRESO------------------------------------------------------>
 <div>
     <h5 class="text-center">EGRESO</h5>
@@ -74,6 +62,7 @@ $datos=$per->get_resul_search($id_producto);
         </tbody>
     </table>
 </div>
+
 <!------------------------------------------FORMULARIO PARA EDITAR UN EGRESO-------------------------..------------------->
      
 
@@ -90,7 +79,7 @@ $datos=$per->get_resul_search($id_producto);
                 <th class="text-center py-0" scope="col">P Actual</th>
                 <th class="text-center py-0" scope="col">Fecha</th>
                 <th class="text-center py-0" scope="col">Egreso</th>
-                <th class="text-center py-0" scope="col">Ingreso</th>
+                
                 <th scope="col"></th>
             </tr>
         </thead>    
@@ -111,7 +100,7 @@ $datos=$per->get_resul_search($id_producto);
             <td class="py-1 px-1 mx-0"><input type="text" name="p_actual" value="<?php echo $ver['p_actual']; ?>" class="form-control" require  /></td>
             <td class="py-1 px-1 mx-0"><input type="date" name="fecha" value="<?php echo $ver['fecha']; ?>" class="form-control"/></td>
             <td class="py-1 px-1 mx-0"><input type="text" name="egreso" value="<?php echo $ver['egreso']; ?>" class="form-control" require /></td>
-            <td class="py-1 px-1 mx-0"><input type="text" name="ingreso" value="<?php echo $ver['ingreso']; ?>" class="form-control" placeholder="Ingrese una cantidad" require /></td>
+            <td class="py-1 px-1 mx-0"><input type="hidden" name="ingreso" value="<?php echo $ver['ingreso']; ?>" class="form-control" placeholder="Ingrese una cantidad" require /></td>
             <td class="py-1 px-1 mx-0"><input type="hidden" name="id" value="<?php echo $ver['id']; ?>" class="form-control"/></td>
             <td class="py-1 px-1 mx-0"><input type="hidden" name="id_producto" value="<?php echo $ver['id_producto']; ?>" class="form-control"/></td>
             <td><button Type="Submit" class="btn btn-success">Editar</button></td>

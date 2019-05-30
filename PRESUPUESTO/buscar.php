@@ -3,11 +3,11 @@
 	$palabra=$_POST['palabra'];
 	$tipo=$_POST['tipo'];
 	$db=Conexionbdd::Conectar();
-	$query="SELECT id_producto,cpc,descripcion,tipo
+	$query="SELECT id_producto,cpc,descripcion,tipo,fecha
 	FROM presupuesto_total,producto 
 	WHERE producto.tipo LIKE '%$tipo%'
 	AND producto.descripcion LIKE '%$palabra%'
-	ORDER BY presupuesto_total.id DESC LIMIT 2";
+	ORDER BY presupuesto_total.id DESC LIMIT 8";
 	$consulta=$db->query($query);
 	if($consulta->num_rows>=1){
 		echo "<table class='table table-hover'>
@@ -16,6 +16,7 @@
 				<th class='text-center' scope='col'></th>
 				<th class='text-center' scope='col'>CPC</th>
 				<th class='text-center' scope='col'>Decripcion</th>
+				<th class='text-center' scope='col'>Fecha</th>
 				<th class='text-center' scope='col'>Tipo</th>
 				<th></th>
 				<th class='text-center'>Seleccionar</th>
@@ -30,6 +31,7 @@
 				
 				<td>".$fila['cpc']."</td>
 				<td>".$fila['descripcion']."</td>
+				<td>".$fila['fecha']."</td>
 				<td>".$fila['tipo']."</td>
 
 				<td><button Type='Submit' class='btn btn-success'>Seleccionar</button></td>
