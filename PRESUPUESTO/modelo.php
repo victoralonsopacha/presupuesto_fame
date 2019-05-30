@@ -71,7 +71,7 @@ class Modelo
     }
 
     //FUNCION PARA EDITAR UN REGISTRO
-    public function edit_registro($id,$nota,$egreso,$fecha,$p_actual){
+    public function edit_registro($id,$nota,$egreso,$ingreso,$fecha,$p_actual){
         $a = $p_actual;
         $b = $egreso;
         $p_total = $a + $b;

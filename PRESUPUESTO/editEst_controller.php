@@ -3,6 +3,7 @@
 	 $id_producto=$_POST['id_producto'];
 	 $nota=$_POST['nota'];
 	 $egreso=$_POST['egreso'];
+	 $ingreso=$_POST['ingreso'];
 	 $fecha=$_POST['fecha'];
 	 $p_actual=$_POST['p_actual'];
 	 
@@ -12,7 +13,7 @@
 	require_once("modelo.php");
 	$per=new Modelo();
 
-	$per->edit_registro($id,$nota,$egreso,$fecha,$p_actual);
+	$per->edit_registro($id,$nota,$egreso,$ingreso,$fecha,$p_actual);
 
 		require_once("iniciar_insert.php");
 ?>

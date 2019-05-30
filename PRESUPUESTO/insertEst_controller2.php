@@ -12,9 +12,9 @@
 	require_once("modelo.php");
 	$per=new Modelo();
 	
-	$per->insert_ingreso($id_producto,$nota,$ingreso,$p_actual,$fecha);
+		//$per->insert_ingreso($id_producto,$nota,$ingreso,$p_actual,$fecha);
 	
-	//$per->insert_egreso($id_producto,$nota,$egreso,$fecha,$p_actual);
+	$per->insert_egreso($id_producto,$nota,$egreso,$fecha,$p_actual);
 	
 	
 	require_once("iniciar_insert.php");
