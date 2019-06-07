@@ -4,17 +4,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
-        <title>FORMULARIO</title>
+        <title>PRESUPUESTO FAME</title>
     </head>
     <body>
-        <h3 style="text-align: center">Presupuesto</h3>
 
         <!-------------------------------FORULARIO PARA INGRESAR UN PRODUCTO--------------------------------------------->
 
         <div class="container py-0">
-            <h4>Ingresar nuevo CPC</h4>
+            <h6><b>SI DESEA INGRESAR UN NUEVO CPC INGRESE LA INFORMACION SOLICITADA</b></h6>
 
-            <form name="frm_ingresar" action="insertar_producto.php" method="post">
+            <form name="frm_ingresar" action="insertar_producto.php" method="post" class="py-0 my-0">
                 <div class="row">
                     <?php
                         /*trae el ultimo id de los registros de la tabla producto
@@ -46,7 +45,12 @@
                 </div>
                 <div class="row">
                     <div class="col">
+                        <!--
                         <textarea name="nota" class="form-control" aria-label="With textarea" placeholder="Ingrese una nota"></textarea>
+                    -->
+
+                        <input name="nota" class="form-control" placeholder="Ingrese una nota"/>
+                        
                     </div>
                     <div class="col">
                         <input type="date" name="fecha" class="form-control"/>
@@ -58,10 +62,14 @@
                             <option>SUBASTA</option>
                             <option>GIRO</option>
                             <option>CATALOGO ELECTRONICO</option>
-                            <option>CONTRATO</option>
-                            <option>BIENES Y SERVICIOS UNICOS</option>
-                            <option>REGIMEN ESPECIAL</option>
                             <option>COTIZACION</option>
+                            <option>MENOR CUANTIA</option>
+                            <option>REGIMEN ESPECIAL</option>
+                            <option>LICITACION</option>
+                            <option>LICITACION DE SEGUROS</option>
+                            <option>MENOR CUANTIA PASAJES</option>
+                            <option>ARRENDAMIENTO</option>
+
                         </select>
                     </div>
                 </div>
@@ -110,10 +118,13 @@
                             <option>SUBASTA</option>
                             <option>GIRO</option>
                             <option>CATALOGO ELECTRONICO</option>
-                            <option>CONTRATO</option>
-                            <option>BIENES Y SERVICIOS UNICOS</option>
-                            <option>REGIMEN ESPECIAL</option>
                             <option>COTIZACION</option>
+                            <option>MENOR CUANTIA</option>
+                            <option>REGIMEN ESPECIAL</option>
+                            <option>LICITACION</option>
+                            <option>LICITACION DE SEGUROS</option>
+                            <option>MENOR CUANTIA PASAJES</option>
+                            <option>ARRENDAMIENTO</option>
                         </select>
                     </div>
                     <div class="col-sm">

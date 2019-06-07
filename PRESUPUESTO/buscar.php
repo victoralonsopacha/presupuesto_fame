@@ -7,7 +7,7 @@
 	FROM presupuesto_total,producto 
 	WHERE producto.tipo LIKE '%$tipo%'
 	AND producto.descripcion LIKE '%$palabra%'
-	ORDER BY presupuesto_total.id DESC LIMIT 8";
+	GROUP BY producto.id_producto DESC";
 	$consulta=$db->query($query);
 	if($consulta->num_rows>=1){
 		echo "<table class='table table-hover'>

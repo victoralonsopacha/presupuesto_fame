@@ -71,17 +71,39 @@ class Modelo
     }
 
     //FUNCION PARA EDITAR UN REGISTRO
-    public function edit_registro($id,$nota,$egreso,$ingreso,$fecha,$p_actual){
-        $a = $p_actual;
+    public function edit_registro($id,$nota,$anterior_egreso,$egreso,$ingreso,$fecha,$p_actual){
+        $a = $anterior_egreso;
         $b = $egreso;
-        $p_total = $a + $b;
+        if($a>$b){
+            $c=$a - $b;
+            $p_total = $p_actual + $c;
+            $consulta=$this->db->query("UPDATE presupuesto_total SET egreso='$egreso', nota='$nota', p_actual='$p_total', fecha='$fecha' WHERE id = $id;");
+        }elseif($a<$b){
+            $c=$b - $a;
+            $p_total = $p_actual - $c;
+            $consulta=$this->db->query("UPDATE presupuesto_total SET egreso='$egreso', nota='$nota', p_actual='$p_total', fecha='$fecha' WHERE id = $id;");
+            
+        }
+        
+        
+        
         $consulta=$this->db->query("UPDATE presupuesto_total SET egreso='$egreso', nota='$nota', p_actual='$p_total', fecha='$fecha' WHERE id = $id;");
-    }
     
-    //FUNCION PARA BORRAR UN REGISTRO
-    public function delete_registro($id){
-        $consulta=$this->db->query("DELETE FROM presupuesto_total WHERE id='$id'");     
     }
+
+    //FUNCION PARA INGRESAR MAS PRESUPUESTO QUE AFECTA AL PRESUPUESTO INICIAL
+    public function edit_p_producto($id_producto,$fecha,$nota,$p_inicial,$p_actual,$ingreso){
+        $a1=$ingreso;
+        $a2=$p_inicial;
+        $total1=$a1 + $a2;
+        $b=$p_actual;
+        $total=$a1 + $b;  
+        $consulta=$this->db->query("UPDATE producto SET p_inicial='$total1' WHERE id_producto = $id_producto;"); 
+         
+        $consulta=$this->db->query("INSERT INTO presupuesto_total (fecha,p_actual,nota,cpcFk) VALUES ('$fecha','$total','$nota','$id_producto');");         
+
+    }
+
 
     //FUNCION PARA INSERTAR UN PRODUCTO CON EL ID DEL PRODUCTO QUE LE CORRESPONDE 
     public function insert_product($cpc,$descripcion,$p_actual,$tipo,$fecha,$nota,$id_producto){
@@ -101,8 +123,10 @@ class Modelo
     //FUNCION PARA REGISTRAR UN EGRESO
     public function insert_egreso($id_producto, $nota, $egreso,$fecha,$p_actual){
         if($egreso>$p_actual){
-            //FALTA IMPLEMENTAR UN MENSAJE EN EL CASO DE SOBREPASARSE EN EL PRESUPUESTO
-            echo "<h1>No tienes suficiente dinero</h1>";
+            //MENSAJE EN EL CASO DE SOBREPASARSE EN EL PRESUPUESTO
+            echo "<hr/>";
+            echo "<h2><p class='text-danger'>No tienes suficiente dinero</p></h2>";
+            echo "<hr/>";
             //return false;
         }else{
             $a = $p_actual;
@@ -128,6 +152,12 @@ class Modelo
 
 //---------------------------------------------------FUNCIONES DE RESERVA-------------------------------------------------- 
     
+
+    
+    //FUNCION PARA BORRAR UN REGISTRO
+    public function delete_registro($id){
+        $consulta=$this->db->query("DELETE FROM presupuesto_total WHERE id='$id'");     
+    }
 
     //FUNCION PARA OBTENER LOS ULTIMOS REGISTROS DE CADA PRODUCTO
 
